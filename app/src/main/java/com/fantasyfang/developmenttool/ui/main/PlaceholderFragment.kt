@@ -13,6 +13,8 @@ import com.fantasyfang.developmenttool.R
 /**
  * A placeholder fragment containing a simple view.
  */
+
+//TODO: Remove
 class PlaceholderFragment : Fragment() {
 
     private lateinit var pageViewModel: PageViewModel
