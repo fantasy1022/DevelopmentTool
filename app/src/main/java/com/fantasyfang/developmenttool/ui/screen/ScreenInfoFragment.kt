@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.fantasyfang.developmenttool.databinding.ScreenInfoFragmentBinding
 
 
@@ -18,6 +19,8 @@ class ScreenInfoFragment : Fragment() {
     private var _binding: ScreenInfoFragmentBinding? = null
     private val binding get() = _binding!!
 
+    private val activityContext get() = activity!!
+
     private lateinit var viewModel: ScreenInfoViewModel
 
     override fun onCreateView(
@@ -26,6 +29,11 @@ class ScreenInfoFragment : Fragment() {
     ): View? {
         _binding = ScreenInfoFragmentBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setUpRecyclerView()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -37,4 +45,11 @@ class ScreenInfoFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    private fun setUpRecyclerView() {
+        with(binding.screenRecyclerView) {
+            layoutManager = LinearLayoutManager(activity)
+        }
+    }
+
 }
