@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fantasyfang.developmenttool.databinding.ScreenInfoFragmentBinding
+import com.fantasyfang.developmenttool.utilities.InjectorUtils
 
 
-class ScreenInfoFragment : Fragment() {
+class ScreenInfoFragment() : Fragment() {
 
     companion object {
         fun newInstance() = ScreenInfoFragment()
@@ -22,11 +24,14 @@ class ScreenInfoFragment : Fragment() {
     private val activityContext get() = activity!!
 
     private lateinit var viewModel: ScreenInfoViewModel
+    private lateinit var itemAdapter: ItemAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val factory = InjectorUtils.getScreenInfoViewModelFactory(requireActivity())
+        viewModel = ViewModelProvider(this, factory).get(ScreenInfoViewModel::class.java)
         _binding = ScreenInfoFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -38,7 +43,7 @@ class ScreenInfoFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ScreenInfoViewModel::class.java)
+        fetchData()
     }
 
     override fun onDestroyView() {
@@ -46,10 +51,18 @@ class ScreenInfoFragment : Fragment() {
         _binding = null
     }
 
+    private fun fetchData() {
+        viewModel.getScreenInfos().observe(this, Observer {
+            itemAdapter.updateList(it.list)
+        })
+    }
+
     private fun setUpRecyclerView() {
         with(binding.screenRecyclerView) {
             layoutManager = LinearLayoutManager(activity)
-            adapter = ItemAdapter(arrayListOf(1, 2, 3, 4, 5))
+            adapter = ItemAdapter().apply {
+                itemAdapter = this
+            }
         }
     }
 
