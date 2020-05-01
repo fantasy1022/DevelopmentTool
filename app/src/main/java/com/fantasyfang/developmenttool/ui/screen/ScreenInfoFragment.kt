@@ -49,6 +49,7 @@ class ScreenInfoFragment : Fragment() {
     private fun setUpRecyclerView() {
         with(binding.screenRecyclerView) {
             layoutManager = LinearLayoutManager(activity)
+            adapter = ItemAdapter(arrayListOf(1, 2, 3, 4, 5))
         }
     }
 

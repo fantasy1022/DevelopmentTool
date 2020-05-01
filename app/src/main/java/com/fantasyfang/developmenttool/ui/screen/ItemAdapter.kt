@@ -1,30 +1,31 @@
 package com.fantasyfang.developmenttool.ui.screen
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.fantasyfang.developmenttool.databinding.ItemScreenBinding
 
-class ItemAdapter() : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
+class ItemAdapter(val listItems: List<Int> = listOf()) :
+    RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
     private lateinit var binding: ItemScreenBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        binding = ItemScreenBinding.inflate(LayoutInflater.from(parent.context))
-        return ItemViewHolder(binding.root)
+        binding = ItemScreenBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ItemViewHolder(binding)
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount(): Int = listItems.size
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.updateContent(listItems[position])
     }
 
-    inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
+    inner class ItemViewHolder(private val itemScreenBinding: ItemScreenBinding) :
+        RecyclerView.ViewHolder(itemScreenBinding.root) {
+        fun updateContent(item: Int) {
+            itemScreenBinding.titleText.text = item.toString()
+        }
     }
 
 }
