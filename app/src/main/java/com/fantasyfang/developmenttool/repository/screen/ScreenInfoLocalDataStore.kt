@@ -19,6 +19,7 @@ class ScreenInfoLocalDataStore(private val context: Context) : LocalDataStore<Sc
         val metrics = DisplayMetrics()
         display.getMetrics(metrics)
 
+        //TODO: how to get info
         return ScreenUIInfo(
             listOf(
                 ScreenInfo(
@@ -27,8 +28,24 @@ class ScreenInfoLocalDataStore(private val context: Context) : LocalDataStore<Sc
                         display.refreshRate.roundToInt().toString()
                     )
                 ),
-                ScreenInfo(Item(ScreenItem.WIDTH, metrics.widthPixels.toString())),
-                ScreenInfo(Item(ScreenItem.HEIGHT, metrics.heightPixels.toString()))
+                ScreenInfo(Item(ScreenItem.WIDTH_PX, metrics.widthPixels.toString())),
+                ScreenInfo(Item(ScreenItem.HEIGHT_PX, metrics.heightPixels.toString())),
+                ScreenInfo(Item(ScreenItem.DENSITY, metrics.density.toString())),
+                ScreenInfo(Item(ScreenItem.DENSITY_DPI, metrics.densityDpi.toString())),
+                ScreenInfo(Item(ScreenItem.DRAWABLE_DENSITY, "xxHdpi")),//TODO: get right dpi
+                ScreenInfo(Item(ScreenItem.LAYOUT_SIZE, "normal")),//TODO: get layout size
+                ScreenInfo(
+                    Item(
+                        ScreenItem.WIDTH_DP,
+                        (metrics.widthPixels / metrics.density).toString()
+                    )
+                ),
+                ScreenInfo(
+                    Item(
+                        ScreenItem.HEIGHT_DP,
+                        (metrics.heightPixels / metrics.density).toString()
+                    )
+                )
             )
         )
     }
