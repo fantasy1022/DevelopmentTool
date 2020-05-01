@@ -2,4 +2,8 @@
 <resources>
     <string name="tab_text_screen">Screen</string>
     <string name="tab_text_device">Device</string>
+    <string name="screen_fresh_rate">Refresh rate (fps)</string>
+    <string name="screen_width_px">Width(px)</string>
+    <string name="screen_height_px">Height(px)</string>
+
 </resources>

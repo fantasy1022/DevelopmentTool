@@ -1,5 +1,6 @@
 package com.fantasyfang.developmenttool.ui.screen
 
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -28,8 +29,10 @@ class ItemAdapter(var listItems: List<ScreenInfo> = listOf()) :
 
     inner class ItemViewHolder(private val itemScreenBinding: ItemScreenBinding) :
         RecyclerView.ViewHolder(itemScreenBinding.root) {
+        var res: Resources = itemScreenBinding.root.resources
+
         fun updateContent(screenInfo: ScreenInfo) {
-            itemScreenBinding.titleText.text = screenInfo.item.name.name
+            itemScreenBinding.titleText.text = res.getString(screenInfo.item.name.value)
             itemScreenBinding.valueText.text = screenInfo.item.value
         }
     }
