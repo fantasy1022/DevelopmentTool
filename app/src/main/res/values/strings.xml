@@ -5,11 +5,17 @@
     <string name="screen_fresh_rate">更新率(fps)</string>
     <string name="screen_width_px">寬(px)</string>
     <string name="screen_height_px">高(px)</string>
+    <string name="screen_usable_width_px">能使用的寬(px)</string>
+    <string name="screen_usable_height_px">能使用的高(px)</string>
     <string name="screen_density">倍數</string>
     <string name="screen_screen_dpi">密度</string>
     <string name="screen_drawable_density">圖像倍數</string>
     <string name="screen_layout_size">大小</string>
     <string name="screen_width_dp">寬(dp)</string>
     <string name="screen_height_dp">高(dp)</string>
+    <string name="screen_small_dp">最小寬度(dp)</string>
+    <string name="screen_orientation">方向</string>
+    <string name="screen_orientation_portrait">直向</string>
+    <string name="screen_orientation_landscape">橫向</string>
 
 </resources>
