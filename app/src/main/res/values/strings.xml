@@ -15,7 +15,9 @@
     <string name="screen_height_dp">高(dp)</string>
     <string name="screen_small_dp">最小寬度(dp)</string>
     <string name="screen_orientation">方向</string>
-    <string name="screen_orientation_portrait">直向</string>
-    <string name="screen_orientation_landscape">橫向</string>
+    <string name="screen_orientation_degree">旋轉角度</string>
+    <string name="screen_diagonal_size">螢幕大小(吋)</string>
+    <string name="screen_x_dpi" translatable="false">X dpi</string>
+    <string name="screen_y_dpi" translatable="false">Y dpi</string>
 
 </resources>

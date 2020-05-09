@@ -14,8 +14,8 @@
     <string name="screen_width_dp">Width(dp)</string>
     <string name="screen_height_dp">Height(dp)</string>
     <string name="screen_small_dp">Smallest dp</string>
-    <string name="screen_orientation">orientation</string>
-    <string name="screen_orientation_portrait">Portrait</string>
-    <string name="screen_orientation_landscape">Landscape</string>
+    <string name="screen_orientation">Orientation</string>
+    <string name="screen_orientation_degree">Orientation degree</string>
+    <string name="screen_diagonal_size">Diagonal Size(inches)</string>
 
 </resources>

@@ -19,10 +19,14 @@ enum class ScreenItem(val value: Int) {
     WIDTH_DP(R.string.screen_width_dp),
     HEIGHT_DP(R.string.screen_height_dp),
     SMALL_DP(R.string.screen_small_dp),
-    ORIENTATION(R.string.screen_orientation)
+    ORIENTATION(R.string.screen_orientation),
+    ORIENTATION_DEGREE(R.string.screen_orientation_degree),
+    DIAGONAL_SIZE(R.string.screen_diagonal_size),
+    X_DPI(R.string.screen_x_dpi),
+    Y_DPI(R.string.screen_y_dpi),
 }
 
-enum class ScreenOrientationItem(val value: Int) {
-    ORIENTATION_PORTRAIT(R.string.screen_orientation_portrait),
-    ORIENTATION_LANDSCAPE(R.string.screen_orientation_landscape),
+enum class ScreenOrientationItem(val value: String) {
+    ORIENTATION_PORTRAIT("Portrait"),
+    ORIENTATION_LANDSCAPE("Landscape"),
 }
