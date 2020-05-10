@@ -1,4 +1,4 @@
-package com.fantasyfang.developmenttool.ui.screen
+package com.fantasyfang.developmenttool.ui.device
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,31 +8,32 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.fantasyfang.developmenttool.data.ScreenInfo
-import com.fantasyfang.developmenttool.databinding.ScreenInfoFragmentBinding
+import com.fantasyfang.developmenttool.data.DeviceInfo
+import com.fantasyfang.developmenttool.databinding.DeviceInfoFragmentBinding
+import com.fantasyfang.developmenttool.ui.screen.ItemAdapter
 import com.fantasyfang.developmenttool.utilities.InjectorUtils
 
-class ScreenInfoFragment() : Fragment() {
+class DeviceInfoFragment : Fragment() {
 
     companion object {
-        fun newInstance() = ScreenInfoFragment()
+        fun newInstance() = DeviceInfoFragment()
     }
 
-    private var _binding: ScreenInfoFragmentBinding? = null
+    private var _binding: DeviceInfoFragmentBinding? = null
     private val binding get() = _binding!!
 
     private val activityContext get() = activity!!
 
-    private lateinit var viewModel: ScreenInfoViewModel
-    private lateinit var itemAdapter: ItemAdapter<ScreenInfo>
+    private lateinit var viewModel: DeviceInfoViewModel
+    private lateinit var itemAdapter: ItemAdapter<DeviceInfo>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val factory = InjectorUtils.getScreenInfoViewModelFactory(requireActivity())
-        viewModel = ViewModelProvider(this, factory).get(ScreenInfoViewModel::class.java)
-        _binding = ScreenInfoFragmentBinding.inflate(inflater, container, false)
+        val factory = InjectorUtils.getDeviceInfoViewModelFactory()
+        viewModel = ViewModelProvider(this, factory).get(DeviceInfoViewModel::class.java)
+        _binding = DeviceInfoFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -52,15 +53,15 @@ class ScreenInfoFragment() : Fragment() {
     }
 
     private fun fetchData() {
-        viewModel.getScreenInfos().observe(this, Observer {
+        viewModel.getDeviceInfo().observe(this, Observer {
             itemAdapter.updateList(it.list)
         })
     }
 
     private fun setUpRecyclerView() {
-        with(binding.screenRecyclerView) {
+        with(binding.deviceRecyclerView) {
             layoutManager = LinearLayoutManager(activity)
-            adapter = ItemAdapter<ScreenInfo>().apply {
+            adapter = ItemAdapter<DeviceInfo>().apply {
                 itemAdapter = this
             }
         }

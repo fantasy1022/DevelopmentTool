@@ -20,4 +20,7 @@
     <string name="screen_x_dpi" translatable="false">X dpi</string>
     <string name="screen_y_dpi" translatable="false">Y dpi</string>
 
+    <string name="device_name">名稱</string>
+
+
 </resources>

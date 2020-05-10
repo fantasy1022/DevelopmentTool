@@ -3,7 +3,7 @@ package com.fantasyfang.developmenttool.ui.main
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.fantasyfang.developmenttool.ui.DeviceInfoFragment
+import com.fantasyfang.developmenttool.ui.device.DeviceInfoFragment
 import com.fantasyfang.developmenttool.ui.screen.ScreenInfoFragment
 
 /**
