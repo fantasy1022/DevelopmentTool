@@ -4,7 +4,12 @@ import com.fantasyfang.developmenttool.R
 
 data class ScreenUIInfo(val list: List<ScreenInfo>)
 
-data class ScreenInfo(val item: Item<ScreenItem, String>)
+//TODO: Refactor implement method
+data class ScreenInfo(val item: Item<ScreenItem, String>) : InfoBase {
+    override fun getStringId(): Int = item.name.value
+
+    override fun getValue(): String = item.value
+}
 
 enum class ScreenItem(val value: Int) {
     REFRESH_RATE(R.string.screen_fresh_rate),

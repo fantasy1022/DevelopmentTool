@@ -4,11 +4,11 @@ import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.fantasyfang.developmenttool.data.ScreenInfo
+import com.fantasyfang.developmenttool.data.InfoBase
 import com.fantasyfang.developmenttool.databinding.ItemScreenBinding
 
-class ItemAdapter(var listItems: List<ScreenInfo> = listOf()) :
-    RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
+class ItemAdapter<T : InfoBase>(var listItems: List<T> = listOf()) :
+    RecyclerView.Adapter<ItemAdapter<T>.ItemViewHolder>() {
     private lateinit var binding: ItemScreenBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -22,7 +22,7 @@ class ItemAdapter(var listItems: List<ScreenInfo> = listOf()) :
         holder.updateContent(listItems[position])
     }
 
-    fun updateList(listItems: List<ScreenInfo>) {
+    fun updateList(listItems: List<T>) {
         this.listItems = listItems
         notifyDataSetChanged()
     }
@@ -31,9 +31,9 @@ class ItemAdapter(var listItems: List<ScreenInfo> = listOf()) :
         RecyclerView.ViewHolder(itemScreenBinding.root) {
         var res: Resources = itemScreenBinding.root.resources
 
-        fun updateContent(screenInfo: ScreenInfo) {
-            itemScreenBinding.titleText.text = res.getString(screenInfo.item.name.value)
-            itemScreenBinding.valueText.text = screenInfo.item.value
+        fun updateContent(t: T) {
+            itemScreenBinding.titleText.text = res.getString(t.getStringId())
+            itemScreenBinding.valueText.text = t.getValue()
         }
     }
 
