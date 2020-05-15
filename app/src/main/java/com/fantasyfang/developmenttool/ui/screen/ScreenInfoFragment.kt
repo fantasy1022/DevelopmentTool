@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fantasyfang.developmenttool.data.ScreenInfo
 import com.fantasyfang.developmenttool.databinding.ScreenInfoFragmentBinding
@@ -21,17 +21,18 @@ class ScreenInfoFragment() : Fragment() {
     private var _binding: ScreenInfoFragmentBinding? = null
     private val binding get() = _binding!!
 
-    private val activityContext get() = activity!!
+    private val viewModel: ScreenInfoViewModel by viewModels {
+        InjectorUtils.getScreenInfoViewModelFactory(
+            requireActivity()
+        )
+    }
 
-    private lateinit var viewModel: ScreenInfoViewModel
     private lateinit var itemAdapter: ItemAdapter<ScreenInfo>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val factory = InjectorUtils.getScreenInfoViewModelFactory(requireActivity())
-        viewModel = ViewModelProvider(this, factory).get(ScreenInfoViewModel::class.java)
         _binding = ScreenInfoFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -52,7 +53,7 @@ class ScreenInfoFragment() : Fragment() {
     }
 
     private fun fetchData() {
-        viewModel.getScreenInfos().observe(this, Observer {
+        viewModel.getScreenInfos().observe(viewLifecycleOwner, Observer {
             itemAdapter.updateList(it.list)
         })
     }

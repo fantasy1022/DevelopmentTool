@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fantasyfang.developmenttool.data.DeviceInfo
 import com.fantasyfang.developmenttool.databinding.DeviceInfoFragmentBinding
@@ -22,17 +22,13 @@ class DeviceInfoFragment : Fragment() {
     private var _binding: DeviceInfoFragmentBinding? = null
     private val binding get() = _binding!!
 
-    private val activityContext get() = activity!!
-
-    private lateinit var viewModel: DeviceInfoViewModel
+    private val viewModel: DeviceInfoViewModel by viewModels { InjectorUtils.getDeviceInfoViewModelFactory() }
     private lateinit var itemAdapter: ItemAdapter<DeviceInfo>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val factory = InjectorUtils.getDeviceInfoViewModelFactory()
-        viewModel = ViewModelProvider(this, factory).get(DeviceInfoViewModel::class.java)
         _binding = DeviceInfoFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -53,7 +49,7 @@ class DeviceInfoFragment : Fragment() {
     }
 
     private fun fetchData() {
-        viewModel.getDeviceInfo().observe(this, Observer {
+        viewModel.getDeviceInfo().observe(viewLifecycleOwner, Observer {
             itemAdapter.updateList(it.list)
         })
     }
