@@ -4,15 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fantasyfang.developmenttool.data.ScreenInfo
 import com.fantasyfang.developmenttool.databinding.ScreenInfoFragmentBinding
-import com.fantasyfang.developmenttool.utilities.InjectorUtils
+import com.fantasyfang.developmenttool.di.GenericSavedStateViewModelFactory
+import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
-class ScreenInfoFragment() : Fragment() {
+class ScreenInfoFragment() : DaggerFragment() {
 
     companion object {
         fun newInstance() = ScreenInfoFragment()
@@ -21,9 +22,13 @@ class ScreenInfoFragment() : Fragment() {
     private var _binding: ScreenInfoFragmentBinding? = null
     private val binding get() = _binding!!
 
+    @Inject
+    lateinit var viewModelFactory: ScreenInfoViewModelFactory
+
     private val viewModel: ScreenInfoViewModel by viewModels {
-        InjectorUtils.getScreenInfoViewModelFactory(
-            requireActivity()
+        GenericSavedStateViewModelFactory(
+            viewModelFactory,
+            this
         )
     }
 

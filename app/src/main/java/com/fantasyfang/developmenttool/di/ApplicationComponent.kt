@@ -11,10 +11,10 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AndroidInjectionModule::class,
-        MainActivityModule::class
-    ]
+        ApplicationModule::class,
+        MainActivityModule::class,
+        ScreenInfoModule::class]
 )
-//ApplicationModule::class,
 interface ApplicationComponent : AndroidInjector<MainApplication> {
     @Component.Factory
     interface Factory : AndroidInjector.Factory<MainApplication>

@@ -1,14 +1,18 @@
 package com.fantasyfang.developmenttool.ui.screen
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.SavedStateHandle
+import com.fantasyfang.developmenttool.di.ViewModelAssistedFactory
 import com.fantasyfang.developmenttool.repository.screen.ScreenInfoRepository
+import javax.inject.Inject
 
-class ScreenInfoViewModelFactory(private val screenInfoRepository: ScreenInfoRepository) :
-    ViewModelProvider.NewInstanceFactory() {
+class ScreenInfoViewModelFactory @Inject constructor(
+    private val screenInfoRepository: ScreenInfoRepository
+) : ViewModelAssistedFactory<ScreenInfoViewModel> {
 
-    @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return ScreenInfoViewModel(screenInfoRepository) as T
+    override fun create(handle: SavedStateHandle): ScreenInfoViewModel {
+        return ScreenInfoViewModel(
+            handle,
+            screenInfoRepository
+        )
     }
 }
