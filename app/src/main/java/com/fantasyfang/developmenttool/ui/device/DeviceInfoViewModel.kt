@@ -4,12 +4,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.fantasyfang.developmenttool.data.DeviceUIInfo
-import com.fantasyfang.developmenttool.repository.device.DeviceInfoRepository
+import com.fantasyfang.developmenttool.repository.InfoRepository
 import kotlinx.coroutines.*
 
 class DeviceInfoViewModel(
     private val savedStateHandle: SavedStateHandle,
-    private val deviceInfoRepository: DeviceInfoRepository
+    private val deviceInfoRepository: InfoRepository<DeviceUIInfo>
 ) : ViewModel() {
     private var myJob: Job? = null
 
@@ -19,7 +19,7 @@ class DeviceInfoViewModel(
         myJob = GlobalScope.launch((Dispatchers.Main)) {
             try {
                 withContext(Dispatchers.IO) {
-                    val result = deviceInfoRepository.getDeviceInfo()
+                    val result = deviceInfoRepository.getInfo()
                     deviceUIInfo.postValue(result)
                 }
             } catch (e: Exception) {

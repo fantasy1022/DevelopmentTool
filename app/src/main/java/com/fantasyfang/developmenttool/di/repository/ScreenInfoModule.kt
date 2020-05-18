@@ -1,7 +1,8 @@
 package com.fantasyfang.developmenttool.di.repository
 
+import com.fantasyfang.developmenttool.data.ScreenUIInfo
+import com.fantasyfang.developmenttool.repository.InfoRepository
 import com.fantasyfang.developmenttool.repository.screen.ScreenInfoLocalDataStore
-import com.fantasyfang.developmenttool.repository.screen.ScreenInfoRepository
 import com.fantasyfang.developmenttool.repository.screen.ScreenInfoRepositoryImpl
 import dagger.Module
 import dagger.Provides
@@ -12,6 +13,6 @@ object ScreenInfoModule {
 
     @Provides
     @Singleton
-    fun provideScreenInfoRepository(screenInfoLocalDataStore: ScreenInfoLocalDataStore): ScreenInfoRepository =
+    fun provideScreenInfoRepository(screenInfoLocalDataStore: ScreenInfoLocalDataStore): InfoRepository<ScreenUIInfo> =
         ScreenInfoRepositoryImpl(screenInfoLocalDataStore)
 }

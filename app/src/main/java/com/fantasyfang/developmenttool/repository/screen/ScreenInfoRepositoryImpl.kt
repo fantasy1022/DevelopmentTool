@@ -1,13 +1,11 @@
 package com.fantasyfang.developmenttool.repository.screen
 
 import com.fantasyfang.developmenttool.data.ScreenUIInfo
-
+import com.fantasyfang.developmenttool.repository.InfoRepository
 
 class ScreenInfoRepositoryImpl(private val screenInfoLocalDataStore: ScreenInfoLocalDataStore) :
-    ScreenInfoRepository {
+    InfoRepository<ScreenUIInfo> {
 
-    override fun getScreenInfo(): ScreenUIInfo {
-        return screenInfoLocalDataStore.getData()
-    }
+    override fun getInfo(): ScreenUIInfo = screenInfoLocalDataStore.getData()
 }
 
