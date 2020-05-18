@@ -9,10 +9,6 @@ class ScreenInfoViewModelFactory @Inject constructor(
     private val screenInfoRepository: ScreenInfoRepository
 ) : ViewModelAssistedFactory<ScreenInfoViewModel> {
 
-    override fun create(handle: SavedStateHandle): ScreenInfoViewModel {
-        return ScreenInfoViewModel(
-            handle,
-            screenInfoRepository
-        )
-    }
+    override fun create(handle: SavedStateHandle): ScreenInfoViewModel =
+        ScreenInfoViewModel(handle, screenInfoRepository)
 }

@@ -1,14 +1,15 @@
 package com.fantasyfang.developmenttool.ui.device
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.SavedStateHandle
+import com.fantasyfang.developmenttool.di.ViewModelAssistedFactory
 import com.fantasyfang.developmenttool.repository.device.DeviceInfoRepository
+import javax.inject.Inject
 
-class DeviceInfoViewModelFactory(private val deviceInfoRepository: DeviceInfoRepository) :
-    ViewModelProvider.NewInstanceFactory() {
+class DeviceInfoViewModelFactory @Inject constructor(
+    private val deviceInfoRepository: DeviceInfoRepository
+) : ViewModelAssistedFactory<DeviceInfoViewModel> {
 
-    @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return DeviceInfoViewModel(deviceInfoRepository) as T
-    }
+    override fun create(handle: SavedStateHandle): DeviceInfoViewModel =
+        DeviceInfoViewModel(handle, deviceInfoRepository)
+
 }

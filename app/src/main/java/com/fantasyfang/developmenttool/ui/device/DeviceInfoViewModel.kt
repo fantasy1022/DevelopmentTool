@@ -1,12 +1,16 @@
 package com.fantasyfang.developmenttool.ui.device
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.fantasyfang.developmenttool.data.DeviceUIInfo
 import com.fantasyfang.developmenttool.repository.device.DeviceInfoRepository
 import kotlinx.coroutines.*
 
-class DeviceInfoViewModel(private val deviceInfoRepository: DeviceInfoRepository) : ViewModel() {
+class DeviceInfoViewModel(
+    private val savedStateHandle: SavedStateHandle,
+    private val deviceInfoRepository: DeviceInfoRepository
+) : ViewModel() {
     private var myJob: Job? = null
 
     fun getDeviceInfo(): MutableLiveData<DeviceUIInfo> {

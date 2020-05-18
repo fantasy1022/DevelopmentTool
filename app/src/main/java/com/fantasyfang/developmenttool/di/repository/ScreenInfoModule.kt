@@ -1,4 +1,4 @@
-package com.fantasyfang.developmenttool.di
+package com.fantasyfang.developmenttool.di.repository
 
 import com.fantasyfang.developmenttool.repository.screen.ScreenInfoLocalDataStore
 import com.fantasyfang.developmenttool.repository.screen.ScreenInfoRepository

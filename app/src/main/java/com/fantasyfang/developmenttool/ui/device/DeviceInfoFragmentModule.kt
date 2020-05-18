@@ -1,16 +1,13 @@
-package com.fantasyfang.developmenttool.ui.screen
+package com.fantasyfang.developmenttool.ui.device
 
 import androidx.fragment.app.Fragment
 import com.fantasyfang.developmenttool.di.FragmentScope
 import dagger.Binds
 import dagger.Module
 
-
 @Module
-abstract class ScreenInfoFragmentModule {
-
+abstract class DeviceInfoFragmentModule {
     @Binds
     @FragmentScope
-    abstract fun fragment(screenInfoFragment: ScreenInfoFragment): Fragment
-
+    abstract fun fragment(deviceInfoFragment: DeviceInfoFragment): Fragment
 }
