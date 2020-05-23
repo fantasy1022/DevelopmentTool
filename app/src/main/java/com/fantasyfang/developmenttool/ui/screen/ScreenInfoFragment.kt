@@ -24,6 +24,5 @@ class ScreenInfoFragment() : BaseInfoFragment<ScreenInfo>() {
     }
 
     override fun getMutableLiveData(): MutableLiveData<List<ScreenInfo>> =
-        viewModel.getScreenInfos()
-
+        viewModel.getInfo()
 }
