@@ -12,5 +12,4 @@ abstract class ScreenInfoFragmentModule {
     @Binds
     @FragmentScope
     abstract fun fragment(screenInfoFragment: ScreenInfoFragment): Fragment
-
 }

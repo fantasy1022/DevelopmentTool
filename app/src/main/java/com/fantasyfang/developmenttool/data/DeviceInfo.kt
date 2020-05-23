@@ -2,9 +2,6 @@ package com.fantasyfang.developmenttool.data
 
 import com.fantasyfang.developmenttool.R
 
-
-data class DeviceUIInfo(val list: List<DeviceInfo>)
-
 data class DeviceInfo(val item: Item<DeviceItem, String>) : InfoBase {
     override fun getStringId(): Int = item.name.value
 

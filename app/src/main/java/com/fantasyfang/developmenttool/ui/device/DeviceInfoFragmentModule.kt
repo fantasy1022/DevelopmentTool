@@ -7,6 +7,7 @@ import dagger.Module
 
 @Module
 abstract class DeviceInfoFragmentModule {
+
     @Binds
     @FragmentScope
     abstract fun fragment(deviceInfoFragment: DeviceInfoFragment): Fragment
