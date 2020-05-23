@@ -2,9 +2,6 @@ package com.fantasyfang.developmenttool.data
 
 import com.fantasyfang.developmenttool.R
 
-data class ScreenUIInfo(val list: List<ScreenInfo>)
-
-//TODO: Refactor implement method
 data class ScreenInfo(val item: Item<ScreenItem, String>) : InfoBase {
     override fun getStringId(): Int = item.name.value
 

@@ -6,7 +6,6 @@ import android.view.WindowManager
 import com.fantasyfang.developmenttool.data.Item
 import com.fantasyfang.developmenttool.data.ScreenInfo
 import com.fantasyfang.developmenttool.data.ScreenItem
-import com.fantasyfang.developmenttool.data.ScreenUIInfo
 import com.fantasyfang.developmenttool.extension.*
 import com.fantasyfang.developmenttool.repository.LocalDataStore
 import javax.inject.Inject
@@ -14,17 +13,16 @@ import kotlin.math.min
 import kotlin.math.roundToInt
 
 class ScreenInfoLocalDataStore @Inject constructor(private val context: Context) :
-    LocalDataStore<ScreenUIInfo> {
+    LocalDataStore<List<ScreenInfo>> {
 
-    override fun getData(): ScreenUIInfo {
+    override fun getData(): List<ScreenInfo> {
         val wm = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
         val display = wm.defaultDisplay
 
         val metrics = DisplayMetrics()
         display.getMetrics(metrics)
 
-        return ScreenUIInfo(
-            listOf(
+        return listOf(
                 ScreenInfo(
                     Item(
                         ScreenItem.REFRESH_RATE,
@@ -69,7 +67,7 @@ class ScreenInfoLocalDataStore @Inject constructor(private val context: Context)
                 ScreenInfo(Item(ScreenItem.X_DPI, metrics.xdpi.toString())),
                 ScreenInfo(Item(ScreenItem.Y_DPI, metrics.ydpi.toString()))
             )
-        )
+
     }
 
 }
