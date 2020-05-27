@@ -2,6 +2,7 @@
     <string name="app_name" translatable="false">DevTool</string>
     <string name="tab_text_screen">螢幕</string>
     <string name="tab_text_device">裝置</string>
+    <string name="tab_text_id" translatable="false">ID</string>
     <string name="screen_fresh_rate">更新率(fps)</string>
     <string name="screen_width_px">寬(px)</string>
     <string name="screen_height_px">高(px)</string>

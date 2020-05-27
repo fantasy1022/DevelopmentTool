@@ -34,11 +34,11 @@ class MainActivity : DaggerAppCompatActivity() {
         TabLayoutMediator(binding.tabs, binding.viewPager) { tab, position ->
             tab.text = resources.getString(TAB_TITLES[position])
         }.attach()
-
     }
 }
 
 private val TAB_TITLES = arrayOf(
     R.string.tab_text_screen,
-    R.string.tab_text_device
+    R.string.tab_text_device,
+    R.string.tab_text_id
 )
