@@ -23,9 +23,10 @@
 
         <TextView
             android:id="@+id/value_text"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
+            android:maxLines="2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/title_text"
             app:layout_constraintTop_toTopOf="parent"

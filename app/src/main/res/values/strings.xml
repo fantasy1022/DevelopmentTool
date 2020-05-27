@@ -20,7 +20,26 @@
     <string name="screen_x_dpi" translatable="false">X dpi</string>
     <string name="screen_y_dpi" translatable="false">Y dpi</string>
 
-    <string name="device_name">名稱</string>
-
+    <string name="device_model">名稱</string>
+    <string name="device_android_version_code">Android API 版本</string>
+    <string name="device_android_version">Android 版本</string>
+    <!--    TODO: Add chinese string -->
+    <string name="device_board">Board</string>
+    <string name="device_bootloader">Bootloader</string>
+    <string name="device_brand">Brand</string>
+    <string name="device_supported_abis">CPU_ABI</string>
+    <string name="device_device">Device</string>
+    <string name="device_display">Display</string>
+    <string name="device_fingerprint">fingerprint</string>
+    <string name="device_hardware">hardware</string>
+    <string name="device_host">host</string>
+    <string name="device_id">id</string>
+    <string name="device_manufacturer">manufacturer</string>
+    <string name="device_product">product</string>
+    <string name="device_supported_32_abis">Support 32 CPU_ABI</string>
+    <string name="device_supported_64_abis">Support 64 CPU_ABI</string>
+    <string name="device_tags">Tags</string>
+    <string name="device_type">TYPE</string>
+    <string name="device_user">USER</string>
 
 </resources>

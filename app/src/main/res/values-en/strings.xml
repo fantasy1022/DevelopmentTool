@@ -18,6 +18,8 @@
     <string name="screen_orientation_degree">Orientation degree</string>
     <string name="screen_diagonal_size">Diagonal Size(inches)</string>
 
-    <string name="device_name">Device name</string>
+    <string name="device_model">Device name</string>
+    <string name="device_android_version_code">Android API</string>
+    <string name="device_android_version">Android version</string>
 
 </resources>
