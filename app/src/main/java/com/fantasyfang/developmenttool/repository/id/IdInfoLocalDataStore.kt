@@ -9,6 +9,7 @@ import com.fantasyfang.developmenttool.data.IdInfo
 import com.fantasyfang.developmenttool.data.IdItem
 import com.fantasyfang.developmenttool.data.Item
 import com.fantasyfang.developmenttool.extension.getDeviceIMEI
+import com.fantasyfang.developmenttool.extension.getIPV4Address
 import com.fantasyfang.developmenttool.repository.LocalDataStore
 import javax.inject.Inject
 
@@ -27,7 +28,8 @@ class IdInfoLocalDataStore @Inject constructor(private val context: Context) :
                     )
                 )
             ),
-            IdInfo(Item(IdItem.IMEI, context.getDeviceIMEI()))
+            IdInfo(Item(IdItem.IMEI, context.getDeviceIMEI())),
+            IdInfo(Item(IdItem.LOCAL_IP, context.getIPV4Address()))
         )
     }
 

@@ -10,5 +10,7 @@ class IdInfo(val item: Item<IdItem, String>) : InfoBase {
 
 enum class IdItem(val value: Int) {
     ANDROID_ID(R.string.id_anndroid_id),
-    IMEI(R.string.id_imei)
+    IMEI(R.string.id_imei),
+    LOCAL_IP(R.string.id_local_ip_address),
+
 }
