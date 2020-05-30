@@ -43,4 +43,8 @@
     <string name="device_type">TYPE</string>
     <string name="device_user">USER</string>
 
+    <string name="id_anndroid_id">Android ID</string>
+    <string name="id_imei">IMEI</string>
+
+
 </resources>

@@ -1,5 +1,9 @@
 package com.fantasyfang.developmenttool.ui.id
 
+import android.Manifest
+import android.content.pm.PackageManager
+import androidx.annotation.RequiresPermission
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import com.fantasyfang.developmenttool.data.IdInfo
@@ -11,6 +15,7 @@ class IdInfoFragment : BaseInfoFragment<IdInfo>() {
 
     companion object {
         fun newInstance() = IdInfoFragment()
+        const val PERMISSIONS_REQUEST_READ_PHONE_STATE = 100
     }
 
     @Inject
@@ -23,7 +28,31 @@ class IdInfoFragment : BaseInfoFragment<IdInfo>() {
         )
     }
 
-    override fun getMutableLiveData(): MutableLiveData<List<IdInfo>> =
-        viewModel.getInfo()
+    @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
+    override fun getMutableLiveData(): MutableLiveData<List<IdInfo>> {
+        // TODO: Use UI button to trigger
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.READ_PHONE_STATE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            requestPermissions(
+                arrayOf(Manifest.permission.READ_PHONE_STATE),
+                PERMISSIONS_REQUEST_READ_PHONE_STATE
+            )
+        }
+        return viewModel.getInfo()
+    }
 
+    override fun onRequestPermissionsResult(
+        requestCode: Int, permissions: Array<out String>, grantResults: IntArray
+    ) {
+        when (requestCode) {
+            PERMISSIONS_REQUEST_READ_PHONE_STATE -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    fetchData()
+                }
+            }
+        }
+    }
 }

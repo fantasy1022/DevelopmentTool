@@ -36,7 +36,7 @@ abstract class BaseInfoFragment<T : InfoBase> : DaggerFragment() {
         fetchData()
     }
 
-    private fun fetchData() {
+    protected fun fetchData() {
         getMutableLiveData().observe(viewLifecycleOwner, Observer {
             itemAdapter.updateList(it)
         })

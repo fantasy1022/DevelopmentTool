@@ -11,7 +11,7 @@ abstract class BaseInfoViewModel<T>(
 
     private var myJob: Job? = null
 
-    fun getInfo(): MutableLiveData<T> {
+    open fun getInfo(): MutableLiveData<T> {
         val uiInfo: MutableLiveData<T> = MutableLiveData()
 
         myJob = GlobalScope.launch((Dispatchers.Main)) {
