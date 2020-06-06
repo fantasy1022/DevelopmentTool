@@ -1,19 +1,21 @@
 <resources>
     <string name="app_name" translatable="false">DevTool</string>
-    <string name="tab_text_screen">螢幕</string>
-    <string name="tab_text_device">裝置</string>
-    <string name="tab_text_id" translatable="false">ID</string>
-    <string name="screen_fresh_rate">更新率(fps)</string>
-    <string name="screen_width_px">寬(px)</string>
-    <string name="screen_height_px">高(px)</string>
-    <string name="screen_usable_width_px">能使用的寬(px)</string>
-    <string name="screen_usable_height_px">能使用的高(px)</string>
-    <string name="screen_density">倍數</string>
-    <string name="screen_screen_dpi">密度</string>
-    <string name="screen_drawable_density">圖像倍數</string>
-    <string name="screen_layout_size">大小</string>
-    <string name="screen_width_dp">寬(dp)</string>
-    <string name="screen_height_dp">高(dp)</string>
+    <string name="tab_text_screen">Screen</string>
+    <string name="tab_text_device">Device</string>
+    <string name="tab_text_id">ID</string>
+
+    <string name="screen_fresh_rate">Refresh rate (fps)</string>
+    <string name="screen_usable_width_px">Usable width(px)</string>
+    <string name="screen_usable_height_px">Usable height(px)</string>
+    <string name="screen_width_px">Width(px)</string>
+    <string name="screen_height_px">Height(px)</string>
+
+    <string name="screen_density">Density</string>
+    <string name="screen_screen_dpi">Screen(dpi)</string>
+    <string name="screen_drawable_density">Drawable density</string>
+    <string name="screen_layout_size">Layout size</string>
+    <string name="screen_width_dp">Width(dp)</string>
+    <string name="screen_height_dp">Height(dp)</string>
     <string name="screen_small_dp">最小寬度(dp)</string>
     <string name="screen_orientation">方向</string>
     <string name="screen_orientation_degree">旋轉角度</string>
@@ -47,5 +49,5 @@
     <string name="id_imei">IMEI</string>
     <string name="id_local_ip_address">Local IP address</string>
 
-
+    <string name="screen_density_value">MDPI</string>
 </resources>

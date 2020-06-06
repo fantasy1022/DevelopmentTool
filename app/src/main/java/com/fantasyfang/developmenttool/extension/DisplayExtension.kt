@@ -1,5 +1,6 @@
 package com.fantasyfang.developmenttool.extension
 
+import android.graphics.Point
 import android.view.Display
 import android.view.Surface.*
 import com.fantasyfang.developmenttool.data.ScreenOrientationItem
@@ -22,3 +23,14 @@ fun Display.getOrientationDegree(): String {
     }
 }
 
+fun Display.getRealWidth(): Int {
+    return Point().also {
+        this.getSize(it)
+    }.x
+}
+
+fun Display.getRealHeight(): Int {
+    return Point().also {
+        this.getSize(it)
+    }.y
+}

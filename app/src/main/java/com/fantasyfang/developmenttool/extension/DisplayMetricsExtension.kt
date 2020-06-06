@@ -2,10 +2,11 @@ package com.fantasyfang.developmenttool.extension
 
 import android.util.DisplayMetrics
 import kotlin.math.pow
+import kotlin.math.roundToInt
 import kotlin.math.sqrt
 
-fun DisplayMetrics.getHeightDP() = heightPixels / density
-fun DisplayMetrics.getWidthDP() = widthPixels / density
+fun DisplayMetrics.getHeightDP() = (heightPixels / density).roundToInt()
+fun DisplayMetrics.getWidthDP() = (widthPixels / density).roundToInt()
 
 fun DisplayMetrics.getScreenInch(): Double {
     val x = (widthPixels.toDouble() / xdpi).pow(2.0)

@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="tab_text_screen">Screen</string>
-    <string name="tab_text_device">Device</string>
-    <string name="screen_fresh_rate">Refresh rate (fps)</string>
-    <string name="screen_width_px">Width(px)</string>
-    <string name="screen_height_px">Height(px)</string>
-    <string name="screen_usable_width_px">Usable width(px)</string>
-    <string name="screen_usable_height_px">Usable height(px)</string>
-    <string name="screen_density">Density</string>
-    <string name="screen_screen_dpi">Screen Dpi</string>
-    <string name="screen_drawable_density">Drawable density</string>
-    <string name="screen_layout_size">Layout size</string>
-    <string name="screen_width_dp">Width(dp)</string>
-    <string name="screen_height_dp">Height(dp)</string>
+
     <string name="screen_small_dp">Smallest dp</string>
     <string name="screen_orientation">Orientation</string>
     <string name="screen_orientation_degree">Orientation degree</string>
