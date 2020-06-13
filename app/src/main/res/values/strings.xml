@@ -37,13 +37,13 @@
     <string name="device_hardware">Hardware</string>
     <string name="device_host">Host</string>
     <string name="device_id">Id</string>
-    <string name="device_manufacturer">manufacturer</string>
-    <string name="device_product">product</string>
+    <string name="device_manufacturer">Manufacturer</string>
+    <string name="device_product">Product</string>
     <string name="device_supported_32_abis">Support 32 CPU_ABI</string>
     <string name="device_supported_64_abis">Support 64 CPU_ABI</string>
     <string name="device_tags">Tags</string>
-    <string name="device_type">TYPE</string>
-    <string name="device_user">USER</string>
+    <string name="device_type">Type</string>
+    <string name="device_user">User</string>
 
     <string name="id_anndroid_id">Android ID</string>
     <string name="id_imei">IMEI</string>
