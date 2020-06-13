@@ -1,11 +1,12 @@
 package com.fantasyfang.developmenttool.data
 
 import com.fantasyfang.developmenttool.R
+import com.fantasyfang.developmenttool.repository.Result
 
-data class DeviceInfo(val item: Item<DeviceItem, String>) : InfoBase {
+data class DeviceInfo(val item: Item<DeviceItem, Result>) : InfoBase {
     override fun getStringId(): Int = item.name.value
 
-    override fun getValue(): String = item.value
+    override fun getValue(): Result = item.value
 }
 
 enum class DeviceItem(val value: Int) {

@@ -1,11 +1,12 @@
 package com.fantasyfang.developmenttool.data
 
 import com.fantasyfang.developmenttool.R
+import com.fantasyfang.developmenttool.repository.Result
 
-data class ScreenInfo(val item: Item<ScreenItem, String>) : InfoBase {
+data class ScreenInfo(val item: Item<ScreenItem, Result>) : InfoBase {
     override fun getStringId(): Int = item.name.value
 
-    override fun getValue(): String = item.value
+    override fun getValue(): Result = item.value
 }
 
 enum class ScreenItem(val value: Int) {

@@ -5,18 +5,20 @@ import android.content.Context
 import android.os.Build
 import android.telephony.TelephonyManager
 import androidx.annotation.RequiresPermission
+import com.fantasyfang.developmenttool.repository.LackPermission
+import com.fantasyfang.developmenttool.repository.Result
 
 @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
-fun Context.getDeviceIMEI(): String {
+fun Context.getDeviceIMEI(): Result {
     val telephonyManager = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
     return try {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            telephonyManager.imei
+            Result.Success(telephonyManager.imei)
         } else {
             @Suppress("DEPRECATION")
-            telephonyManager.deviceId
+            Result.Success(telephonyManager.deviceId)
         }
     } catch (e: SecurityException) {
-        "" //TODO: Add error enum
+        Result.FailureLackPermission(LackPermission.READ_PHONE_STATE_PERMISSION)
     }
 }

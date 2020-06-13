@@ -9,7 +9,6 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fantasyfang.developmenttool.data.InfoBase
 import com.fantasyfang.developmenttool.databinding.BaseInfoFragmentBinding
-import com.fantasyfang.developmenttool.ui.screen.ItemAdapter
 import dagger.android.support.DaggerFragment
 
 

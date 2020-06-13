@@ -1,4 +1,4 @@
-package com.fantasyfang.developmenttool.ui.screen
+package com.fantasyfang.developmenttool.ui.base
 
 import android.content.res.Resources
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.fantasyfang.developmenttool.data.InfoBase
 import com.fantasyfang.developmenttool.databinding.ItemInfoBinding
+import com.fantasyfang.developmenttool.repository.Result
 
 class ItemAdapter<T : InfoBase>(var listItems: List<T> = listOf()) :
     RecyclerView.Adapter<ItemAdapter<T>.ItemViewHolder>() {
@@ -33,7 +34,16 @@ class ItemAdapter<T : InfoBase>(var listItems: List<T> = listOf()) :
 
         fun updateContent(t: T) {
             itemScreenBinding.titleText.text = res.getString(t.getStringId())
-            itemScreenBinding.valueText.text = t.getValue()
+            itemScreenBinding.valueText.text =
+                when (t.getValue()) {
+                    is Result.Success -> {
+                        (t.getValue() as Result.Success).string
+                    }
+                    is Result.FailureLackPermission -> {
+                        //TODO:Show button
+                        (t.getValue() as Result.FailureLackPermission).lackPermission.value
+                    }
+                }
         }
     }
 
