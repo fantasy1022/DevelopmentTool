@@ -20,25 +20,23 @@
     <string name="screen_orientation">Orientation</string>
     <string name="screen_orientation_degree">Orientation degree</string>
     <string name="screen_diagonal_size">Diagonal Size(inches)</string>
-    <string name="screen_x_dpi" translatable="false">X dpi</string>
-    <string name="screen_y_dpi" translatable="false">Y dpi</string>
-    <string name="screen_status_bar_height" translatable="false">Status Bar Height(px)</string>
-    <string name="screen_navigation_bar_height" translatable="false">Navigation Bar Height(px)</string>
+    <string name="screen_x_dpi">X dpi</string>
+    <string name="screen_y_dpi">Y dpi</string>
+    <string name="screen_status_bar_height">Status Bar Height(px)</string>
+    <string name="screen_navigation_bar_height">Navigation Bar Height(px)</string>
 
-    <string name="device_model">Device name</string>
+    <string name="device_model">Device model</string>
     <string name="device_android_version_code">Android API</string>
     <string name="device_android_version">Android version</string>
-    <!--    TODO: Add chinese string -->
     <string name="device_board">Board</string>
     <string name="device_bootloader">Bootloader</string>
     <string name="device_brand">Brand</string>
     <string name="device_supported_abis">CPU_ABI</string>
-    <string name="device_device">Device</string>
     <string name="device_display">Display</string>
-    <string name="device_fingerprint">fingerprint</string>
-    <string name="device_hardware">hardware</string>
-    <string name="device_host">host</string>
-    <string name="device_id">id</string>
+    <string name="device_fingerprint">Fingerprint</string>
+    <string name="device_hardware">Hardware</string>
+    <string name="device_host">Host</string>
+    <string name="device_id">Id</string>
     <string name="device_manufacturer">manufacturer</string>
     <string name="device_product">product</string>
     <string name="device_supported_32_abis">Support 32 CPU_ABI</string>

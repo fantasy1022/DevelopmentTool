@@ -16,7 +16,6 @@ enum class DeviceItem(val value: Int) {
     BOOTLOADER(R.string.device_bootloader),
     BRAND(R.string.device_brand),
     SUPPORTED_ABIS(R.string.device_supported_abis),
-    DEVICE(R.string.device_device),
     DISPLAY(R.string.device_display),
     FINGERPRINT(R.string.device_fingerprint),
     HARDWARE(R.string.device_hardware),
