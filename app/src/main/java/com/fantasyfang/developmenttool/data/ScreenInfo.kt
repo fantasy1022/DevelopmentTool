@@ -26,6 +26,8 @@ enum class ScreenItem(val value: Int) {
     DIAGONAL_SIZE(R.string.screen_diagonal_size),
     X_DPI(R.string.screen_x_dpi),
     Y_DPI(R.string.screen_y_dpi),
+    STATUS_BAR_HEIGHT(R.string.screen_status_bar_height),
+    NAVIGATION_BAR_HEIGHT(R.string.screen_navigation_bar_height)
 }
 
 enum class ScreenOrientationItem(val value: String) {

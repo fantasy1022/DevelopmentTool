@@ -26,7 +26,7 @@ class ScreenInfoLocalDataStore @Inject constructor(private val context: Context)
 
         val metrics = DisplayMetrics()
         display.getMetrics(metrics)
-        
+
         return listOf(
             ScreenInfo(Item(ScreenItem.REFRESH_RATE, display.refreshRate.roundToInt().toString())),
             ScreenInfo(
@@ -46,7 +46,7 @@ class ScreenInfoLocalDataStore @Inject constructor(private val context: Context)
             ScreenInfo(
                 Item(
                     ScreenItem.DENSITY,
-                    ((metrics.density * 100.0).roundToInt() / 100.0).toString()
+                    ((metrics.density * 10.0).roundToInt() / 10.0).toString()
                 )
             ),
             ScreenInfo(Item(ScreenItem.DENSITY_DPI, metrics.densityDpi.toString())),
@@ -81,12 +81,26 @@ class ScreenInfoLocalDataStore @Inject constructor(private val context: Context)
             ScreenInfo(Item(ScreenItem.ORIENTATION, display.getOrientationString())),
             ScreenInfo(Item(ScreenItem.ORIENTATION_DEGREE, display.getOrientationDegree())),
             ScreenInfo(Item(ScreenItem.DIAGONAL_SIZE, metrics.getScreenInch().toString())),
-            ScreenInfo(Item(ScreenItem.X_DPI, metrics.xdpi.toString())),
-            ScreenInfo(Item(ScreenItem.Y_DPI, metrics.ydpi.toString())),
-            ScreenInfo(Item(ScreenItem.Y_DPI, context.getStatusBarHeight().toString())),
-            ScreenInfo(Item(ScreenItem.Y_DPI, context.getNavigationBarHeight().toString()))
+            ScreenInfo(
+                Item(
+                    ScreenItem.X_DPI,
+                    ((metrics.xdpi * 10).roundToInt() / 10.0).toString()
+                )
+            ),
+            ScreenInfo(
+                Item(
+                    ScreenItem.Y_DPI,
+                    ((metrics.ydpi * 10).roundToInt() / 10.0).toString()
+                )
+            ),
+            ScreenInfo(Item(ScreenItem.STATUS_BAR_HEIGHT, context.getStatusBarHeight().toString())),
+            ScreenInfo(
+                Item(
+                    ScreenItem.NAVIGATION_BAR_HEIGHT,
+                    context.getNavigationBarHeight().toString()
+                )
+            )
         )
-
     }
 
 }

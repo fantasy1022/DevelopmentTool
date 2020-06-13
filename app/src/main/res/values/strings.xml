@@ -16,16 +16,18 @@
     <string name="screen_layout_size">Layout size</string>
     <string name="screen_width_dp">Width(dp)</string>
     <string name="screen_height_dp">Height(dp)</string>
-    <string name="screen_small_dp">最小寬度(dp)</string>
-    <string name="screen_orientation">方向</string>
-    <string name="screen_orientation_degree">旋轉角度</string>
-    <string name="screen_diagonal_size">螢幕大小(吋)</string>
+    <string name="screen_small_dp">Smallest dp</string>
+    <string name="screen_orientation">Orientation</string>
+    <string name="screen_orientation_degree">Orientation degree</string>
+    <string name="screen_diagonal_size">Diagonal Size(inches)</string>
     <string name="screen_x_dpi" translatable="false">X dpi</string>
     <string name="screen_y_dpi" translatable="false">Y dpi</string>
+    <string name="screen_status_bar_height" translatable="false">Status Bar Height(px)</string>
+    <string name="screen_navigation_bar_height" translatable="false">Navigation Bar Height(px)</string>
 
-    <string name="device_model">名稱</string>
-    <string name="device_android_version_code">Android API 版本</string>
-    <string name="device_android_version">Android 版本</string>
+    <string name="device_model">Device name</string>
+    <string name="device_android_version_code">Android API</string>
+    <string name="device_android_version">Android version</string>
     <!--    TODO: Add chinese string -->
     <string name="device_board">Board</string>
     <string name="device_bootloader">Bootloader</string>

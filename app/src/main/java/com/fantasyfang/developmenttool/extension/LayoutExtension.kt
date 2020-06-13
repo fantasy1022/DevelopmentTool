@@ -2,10 +2,8 @@ package com.fantasyfang.developmenttool.extension
 
 import android.content.Context
 import android.content.res.Configuration
-import android.content.res.TypedArray
 import android.util.DisplayMetrics
 import android.view.Display
-import com.fantasyfang.developmenttool.R
 import com.fantasyfang.developmenttool.data.ScreenOrientationItem
 
 
@@ -72,14 +70,6 @@ fun Context.getNavigationBarHeight(): Int {
         resources.getDimensionPixelSize(resourceId)
     } else {
         0
-    }
-}
-
-fun Context.getActionBarHeight(): Int {
-    val styledAttributes: TypedArray = theme
-        .obtainStyledAttributes(intArrayOf(R.attr.actionBarSize))
-    return styledAttributes.getDimension(0, 0f).toInt().apply {
-        styledAttributes.recycle()
     }
 }
 

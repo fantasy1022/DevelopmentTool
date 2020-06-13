@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.fantasyfang.developmenttool.data.InfoBase
-import com.fantasyfang.developmenttool.databinding.ItemScreenBinding
+import com.fantasyfang.developmenttool.databinding.ItemInfoBinding
 
 class ItemAdapter<T : InfoBase>(var listItems: List<T> = listOf()) :
     RecyclerView.Adapter<ItemAdapter<T>.ItemViewHolder>() {
-    private lateinit var binding: ItemScreenBinding
+    private lateinit var binding: ItemInfoBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        binding = ItemScreenBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        binding = ItemInfoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ItemViewHolder(binding)
     }
 
@@ -27,7 +27,7 @@ class ItemAdapter<T : InfoBase>(var listItems: List<T> = listOf()) :
         notifyDataSetChanged()
     }
 
-    inner class ItemViewHolder(private val itemScreenBinding: ItemScreenBinding) :
+    inner class ItemViewHolder(private val itemScreenBinding: ItemInfoBinding) :
         RecyclerView.ViewHolder(itemScreenBinding.root) {
         var res: Resources = itemScreenBinding.root.resources
 
