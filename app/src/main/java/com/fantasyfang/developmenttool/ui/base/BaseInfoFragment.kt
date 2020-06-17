@@ -9,10 +9,11 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fantasyfang.developmenttool.data.InfoBase
 import com.fantasyfang.developmenttool.databinding.BaseInfoFragmentBinding
+import com.fantasyfang.developmenttool.repository.LackPermission
 import dagger.android.support.DaggerFragment
 
 
-abstract class BaseInfoFragment<T : InfoBase> : DaggerFragment() {
+abstract class BaseInfoFragment<T : InfoBase> : DaggerFragment(), ItemAdapter.ItemClickListener {
 
     private lateinit var itemAdapter: ItemAdapter<T>
     private var _binding: BaseInfoFragmentBinding? = null
@@ -35,6 +36,10 @@ abstract class BaseInfoFragment<T : InfoBase> : DaggerFragment() {
         fetchData()
     }
 
+    override fun onItemClickPermission(permission: LackPermission) {
+
+    }
+
     protected fun fetchData() {
         getMutableLiveData().observe(viewLifecycleOwner, Observer {
             itemAdapter.updateList(it)
@@ -44,7 +49,7 @@ abstract class BaseInfoFragment<T : InfoBase> : DaggerFragment() {
     private fun setUpRecyclerView() {
         with(binding.baseRecyclerView) {
             layoutManager = LinearLayoutManager(activity)
-            adapter = ItemAdapter<T>().apply {
+            adapter = ItemAdapter<T>(itemClickListener = this@BaseInfoFragment).apply {
                 itemAdapter = this
             }
         }

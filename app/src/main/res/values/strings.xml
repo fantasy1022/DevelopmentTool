@@ -48,6 +48,7 @@
     <string name="id_anndroid_id">Android ID</string>
     <string name="id_imei">IMEI</string>
     <string name="id_local_ip_address">Local IP address</string>
+    <string name="get_permission_info">Get %1$s</string>
 
     <string name="screen_density_value">MDPI</string>
 </resources>

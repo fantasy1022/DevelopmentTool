@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import com.fantasyfang.developmenttool.data.IdInfo
 import com.fantasyfang.developmenttool.di.GenericSavedStateViewModelFactory
+import com.fantasyfang.developmenttool.repository.LackPermission
 import com.fantasyfang.developmenttool.ui.base.BaseInfoFragment
 import javax.inject.Inject
 
@@ -15,7 +16,7 @@ class IdInfoFragment : BaseInfoFragment<IdInfo>() {
 
     companion object {
         fun newInstance() = IdInfoFragment()
-        const val PERMISSIONS_REQUEST_READ_PHONE_STATE = 100
+        const val PERMISSIONS_REQUEST = 100
     }
 
     @Inject
@@ -28,19 +29,21 @@ class IdInfoFragment : BaseInfoFragment<IdInfo>() {
         )
     }
 
-    @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
-    override fun getMutableLiveData(): MutableLiveData<List<IdInfo>> {
-        // TODO: Use UI button to trigger
+    override fun onItemClickPermission(permission: LackPermission) {
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
-                Manifest.permission.READ_PHONE_STATE
+                permission.value
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             requestPermissions(
-                arrayOf(Manifest.permission.READ_PHONE_STATE),
-                PERMISSIONS_REQUEST_READ_PHONE_STATE
+                arrayOf(permission.value),
+                PERMISSIONS_REQUEST
             )
         }
+    }
+
+    @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
+    override fun getMutableLiveData(): MutableLiveData<List<IdInfo>> {
         return viewModel.getInfo()
     }
 
@@ -48,7 +51,7 @@ class IdInfoFragment : BaseInfoFragment<IdInfo>() {
         requestCode: Int, permissions: Array<out String>, grantResults: IntArray
     ) {
         when (requestCode) {
-            PERMISSIONS_REQUEST_READ_PHONE_STATE -> {
+            PERMISSIONS_REQUEST -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     fetchData()
                 }

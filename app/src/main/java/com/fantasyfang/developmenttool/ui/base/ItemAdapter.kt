@@ -5,12 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.fantasyfang.developmenttool.R
 import com.fantasyfang.developmenttool.data.InfoBase
 import com.fantasyfang.developmenttool.databinding.ItemInfoBinding
+import com.fantasyfang.developmenttool.repository.LackPermission
 import com.fantasyfang.developmenttool.repository.Result
 
-class ItemAdapter<T : InfoBase>(var listItems: List<T> = listOf()) :
-    RecyclerView.Adapter<ItemAdapter<T>.ItemViewHolder>() {
+class ItemAdapter<T : InfoBase>(
+    private var listItems: List<T> = listOf(),
+    private val itemClickListener: ItemClickListener
+) : RecyclerView.Adapter<ItemAdapter<T>.ItemViewHolder>() {
+
+    interface ItemClickListener {
+        fun onItemClickPermission(permission: LackPermission)
+    }
+
     private lateinit var binding: ItemInfoBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -47,15 +56,16 @@ class ItemAdapter<T : InfoBase>(var listItems: List<T> = listOf()) :
                     with(itemScreenBinding) {
                         valueText.visibility = View.GONE
                         errorButton.visibility = View.VISIBLE
-                        //TODO: Parse permission name
-                        //TOOD: Use string with placeHolder
-                        errorButton.text =
-                            "Get ${(t.getValue() as Result.FailureLackPermission).lackPermission.value}"
+                        errorButton.text = String.format(
+                            itemView.resources.getString(R.string.get_permission_info),
+                            (t.getValue() as Result.FailureLackPermission).lackPermission.value
+                        )
+
                         errorButton.setOnClickListener {
                             //TODO: Use interface to bring permission
+                            itemClickListener.onItemClickPermission((t.getValue() as Result.FailureLackPermission).lackPermission)
                         }
                     }
-
                 }
             }
         }
