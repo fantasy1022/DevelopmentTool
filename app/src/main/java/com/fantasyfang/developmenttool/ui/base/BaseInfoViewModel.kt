@@ -1,28 +1,24 @@
 package com.fantasyfang.developmenttool.ui.base
 
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
 import com.fantasyfang.developmenttool.repository.InfoRepository
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlin.coroutines.CoroutineContext
 
 abstract class BaseInfoViewModel<T>(
     private val infoRepository: InfoRepository<T>
-) : ViewModel(), CoroutineScope {
+) : ViewModel() {
 
-    override val coroutineContext: CoroutineContext
-        get() = Dispatchers.Main
+    open fun getInfo(): LiveData<T> {//:
+//        val uiInfo: MutableLiveData<T> = MutableLiveData()
 
-    open fun getInfo(): MutableLiveData<T> {
-        val uiInfo: MutableLiveData<T> = MutableLiveData()
-
-        launch(Dispatchers.IO) {
-            val result = infoRepository.getInfo()
-            uiInfo.postValue(result)
+//        viewModelScope.launch {
+////            val result = infoRepository.getInfo()
+////            uiInfo.value = result
+//        }
+        return liveData(context = Dispatchers.IO) {
+            emitSource(infoRepository.getInfo())
         }
-
-        return uiInfo
     }
 }

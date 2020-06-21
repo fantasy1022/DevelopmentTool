@@ -5,7 +5,7 @@ import android.content.pm.PackageManager
 import androidx.annotation.RequiresPermission
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
 import com.fantasyfang.developmenttool.data.IdInfo
 import com.fantasyfang.developmenttool.di.GenericSavedStateViewModelFactory
 import com.fantasyfang.developmenttool.repository.LackPermission
@@ -47,7 +47,7 @@ class IdInfoFragment : BaseInfoFragment<IdInfo>() {
     }
 
     @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
-    override fun getMutableLiveData(): MutableLiveData<List<IdInfo>> {
+    override fun getMutableLiveData(): LiveData<List<IdInfo>> {
         return viewModel.getInfo()
     }
 

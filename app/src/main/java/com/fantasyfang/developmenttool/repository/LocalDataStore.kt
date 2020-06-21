@@ -1,5 +1,7 @@
 package com.fantasyfang.developmenttool.repository
 
+import androidx.lifecycle.LiveData
+
 interface LocalDataStore<T> {
-    fun getData(): T
+    suspend fun getData(): LiveData<T>
 }

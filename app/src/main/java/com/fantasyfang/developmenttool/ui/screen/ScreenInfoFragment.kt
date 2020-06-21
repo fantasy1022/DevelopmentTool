@@ -1,7 +1,7 @@
 package com.fantasyfang.developmenttool.ui.screen
 
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
 import com.fantasyfang.developmenttool.data.ScreenInfo
 import com.fantasyfang.developmenttool.di.GenericSavedStateViewModelFactory
 import com.fantasyfang.developmenttool.ui.base.BaseInfoFragment
@@ -23,6 +23,6 @@ class ScreenInfoFragment() : BaseInfoFragment<ScreenInfo>() {
         )
     }
 
-    override fun getMutableLiveData(): MutableLiveData<List<ScreenInfo>> =
+    override fun getMutableLiveData(): LiveData<List<ScreenInfo>> =
         viewModel.getInfo()
 }

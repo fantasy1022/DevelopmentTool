@@ -1,5 +1,7 @@
 package com.fantasyfang.developmenttool.repository
 
+import androidx.lifecycle.LiveData
+
 interface InfoRepository<T> {
-    fun getInfo(): T
+    suspend fun getInfo(): LiveData<T>
 }

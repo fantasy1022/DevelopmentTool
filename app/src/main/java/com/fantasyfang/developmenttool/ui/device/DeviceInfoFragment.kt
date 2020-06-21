@@ -1,7 +1,7 @@
 package com.fantasyfang.developmenttool.ui.device
 
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
 import com.fantasyfang.developmenttool.data.DeviceInfo
 import com.fantasyfang.developmenttool.di.GenericSavedStateViewModelFactory
 import com.fantasyfang.developmenttool.ui.base.BaseInfoFragment
@@ -23,7 +23,7 @@ class DeviceInfoFragment : BaseInfoFragment<DeviceInfo>() {
         )
     }
 
-    override fun getMutableLiveData(): MutableLiveData<List<DeviceInfo>> =
-        viewModel.getInfo()
+    override fun getMutableLiveData(): LiveData<List<DeviceInfo>> //: MutableLiveData<List<DeviceInfo>>
+            = viewModel.getInfo()
 
 }
