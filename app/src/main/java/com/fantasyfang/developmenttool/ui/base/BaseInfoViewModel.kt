@@ -10,15 +10,8 @@ abstract class BaseInfoViewModel<T>(
     private val infoRepository: InfoRepository<T>
 ) : ViewModel() {
 
-    open fun getInfo(): LiveData<T> {//:
-//        val uiInfo: MutableLiveData<T> = MutableLiveData()
-
-//        viewModelScope.launch {
-////            val result = infoRepository.getInfo()
-////            uiInfo.value = result
-//        }
-        return liveData(context = Dispatchers.IO) {
-            emitSource(infoRepository.getInfo())
-        }
+    open fun getInfo(): LiveData<T> = liveData(context = Dispatchers.IO) {
+        emitSource(infoRepository.getInfo())
     }
+
 }
