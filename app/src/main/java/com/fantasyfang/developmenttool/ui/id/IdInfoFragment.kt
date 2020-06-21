@@ -42,6 +42,10 @@ class IdInfoFragment : BaseInfoFragment<IdInfo>() {
         }
     }
 
+    override fun onItemClickException(exception: Exception) {
+        fetchData()
+    }
+
     @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
     override fun getMutableLiveData(): MutableLiveData<List<IdInfo>> {
         return viewModel.getInfo()

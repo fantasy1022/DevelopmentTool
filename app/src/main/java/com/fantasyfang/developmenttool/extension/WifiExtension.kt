@@ -6,14 +6,17 @@ import android.net.wifi.WifiManager
 import com.fantasyfang.developmenttool.repository.Result
 import java.math.BigInteger
 import java.net.InetAddress
-
+import java.net.UnknownHostException
 
 fun Context.getIPV4Address(): Result {
-    //TODO: Add try catch
-    val wifiManager = this.getSystemService(WIFI_SERVICE) as WifiManager
-    val wifiInfo = wifiManager.connectionInfo
-    val myIPAddress: ByteArray =
-        BigInteger.valueOf(wifiInfo.ipAddress.toLong()).toByteArray().reversedArray()
-
-    return Result.Success(InetAddress.getByAddress(myIPAddress).hostAddress)
+    return try {
+        val wifiManager = this.getSystemService(WIFI_SERVICE) as WifiManager
+        val wifiInfo = wifiManager.connectionInfo
+        val myIPAddress: ByteArray =
+            BigInteger.valueOf(wifiInfo.ipAddress.toLong()).toByteArray().reversedArray()
+        Result.Success(InetAddress.getByAddress(myIPAddress).hostAddress)
+    } catch (e: UnknownHostException) {
+        e.printStackTrace()
+        Result.FailureLackWifi(e)
+    }
 }

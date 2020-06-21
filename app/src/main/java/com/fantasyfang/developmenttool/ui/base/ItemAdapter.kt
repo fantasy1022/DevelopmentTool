@@ -18,6 +18,7 @@ class ItemAdapter<T : InfoBase>(
 
     interface ItemClickListener {
         fun onItemClickPermission(permission: LackPermission)
+        fun onItemClickException(exception: Exception)
     }
 
     private lateinit var binding: ItemInfoBinding
@@ -62,8 +63,20 @@ class ItemAdapter<T : InfoBase>(
                         )
 
                         errorButton.setOnClickListener {
-                            //TODO: Use interface to bring permission
                             itemClickListener.onItemClickPermission((t.getValue() as Result.FailureLackPermission).lackPermission)
+                        }
+                    }
+                }
+                is Result.FailureLackWifi -> {
+                    with(itemScreenBinding) {
+                        valueText.visibility = View.GONE
+                        errorButton.visibility = View.VISIBLE
+                        errorButton.text = String.format(
+                            itemView.resources.getString(R.string.connect_exception),
+                            (t.getValue() as Result.FailureLackWifi).exception.toString()
+                        )
+                        errorButton.setOnClickListener {
+                            itemClickListener.onItemClickException((t.getValue() as Result.FailureLackWifi).exception)
                         }
                     }
                 }

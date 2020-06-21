@@ -37,7 +37,11 @@ abstract class BaseInfoFragment<T : InfoBase> : DaggerFragment(), ItemAdapter.It
     }
 
     override fun onItemClickPermission(permission: LackPermission) {
+        //Do nothing
+    }
 
+    override fun onItemClickException(exception: Exception) {
+        //Do nothing
     }
 
     protected fun fetchData() {
